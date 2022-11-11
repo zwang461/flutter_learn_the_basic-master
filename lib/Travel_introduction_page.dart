@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-
+import 'Image_Screen.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -46,8 +46,14 @@ final List<Widget> imageSliders = imgList
                 child: Stack(
                   children: <Widget>[
                     InteractiveViewer(
-                        child: Image.network(item,
-                            fit: BoxFit.fill, width: 1500.0)),
+                      child: CachedNetworkImage(
+                        placeholder: (context, url) =>
+                            const CircularProgressIndicator(),
+                        imageUrl: item,
+                        fit: BoxFit.cover,
+                        width: 1000,
+                      ),
+                    ),
                     Stack(children: [
                       Positioned(
                         bottom: 0.0,
@@ -92,8 +98,12 @@ final List<Widget> travelImageSliders = travelList
                 child: Stack(
                   children: <Widget>[
                     InteractiveViewer(
-                        child: Image.network(item,
-                            fit: BoxFit.cover, width: 1000.0)),
+                        child: CachedNetworkImage(
+                            placeholder: (context, url) =>
+                                const CircularProgressIndicator(),
+                            imageUrl: item,
+                            fit: BoxFit.cover,
+                            width: 1000.0)),
                     Stack(
                       children: [
                         Positioned(
@@ -140,8 +150,12 @@ final List<Widget> travelImageSliders_1 = travelList_1
                 child: Stack(
                   children: <Widget>[
                     InteractiveViewer(
-                        child: Image.network(item,
-                            fit: BoxFit.cover, width: 1000.0)),
+                        child: CachedNetworkImage(
+                            placeholder: (context, url) =>
+                                const CircularProgressIndicator(),
+                            imageUrl: item,
+                            fit: BoxFit.cover,
+                            width: 1000.0)),
                     Stack(
                       children: [
                         Positioned(
@@ -187,8 +201,12 @@ final List<Widget> travelImageSliders_2 = travelList_2
                 child: Stack(
                   children: <Widget>[
                     InteractiveViewer(
-                        child: Image.network(item,
-                            fit: BoxFit.cover, width: 1000.0)),
+                        child: CachedNetworkImage(
+                            placeholder: (context, url) =>
+                                const LinearProgressIndicator(),
+                            imageUrl: item,
+                            fit: BoxFit.cover,
+                            width: 1000.0)),
                     Stack(
                       children: [
                         Positioned(
@@ -380,14 +398,23 @@ class _cardsState extends State<cards> {
                 child: Card(
                   child: Column(
                     children: [
-                      CarouselSlider(
-                        options: CarouselOptions(
-                          height: 240,
-                          viewportFraction: 1,
-                          autoPlay: false,
-                          enlargeCenterPage: true,
+                      GestureDetector(
+                        child: CarouselSlider(
+                          options: CarouselOptions(
+                            height: 240,
+                            viewportFraction: 1,
+                            autoPlay: false,
+                            enlargeCenterPage: true,
+                          ),
+                          items: travelImageSliders_1,
                         ),
-                        items: travelImageSliders_1,
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const ImageScreen()),
+                          );
+                        },
                       ),
                       Stack(children: [
                         Align(

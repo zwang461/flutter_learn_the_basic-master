@@ -64,11 +64,11 @@ class _firstPageState extends State<firstPage> {
                           // ignore: sort_child_properties_last
                           child: GestureDetector(
                               onTap: () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (BuildContext context) {
-                                  // ignore: prefer_const_constructors
-                                  return cards();
-                                }));
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const cards()),
+                                );
                               },
                               child: Image.asset(
                                 "images/travel.png",
@@ -107,12 +107,33 @@ class _firstPageState extends State<firstPage> {
               )
             : currentIndex == 2
                 ? GridView.count(
-                    crossAxisCount: 2,
+                    crossAxisCount: 4,
                     mainAxisSpacing: 5,
                     crossAxisSpacing: 5,
                     //padding: const EdgeInsets.all(10),
 
                     children: [
+                      CachedNetworkImage(
+                        imageUrl: 'https://picsum.photos/250?image=9',
+                      ),
+                      CachedNetworkImage(
+                        imageUrl:
+                            "https://prod-webuysg.oss.webuy.ren/p8gdomYP.jpg",
+                      ),
+                      CachedNetworkImage(
+                        imageUrl:
+                            "https://prod-webuysg.oss.webuy.ren/9DWVtBDJ.jpg",
+                      ),
+                      CachedNetworkImage(
+                        imageUrl:
+                            "https://prod-webuysg.oss.webuy.ren/7DBDy3kV.jpg",
+                      ),
+                      CachedNetworkImage(
+                        imageUrl: 'https://picsum.photos/250?image=9',
+                      ),
+                      CachedNetworkImage(
+                        imageUrl: 'https://picsum.photos/250?image=9',
+                      ),
                       CachedNetworkImage(
                         imageUrl: 'https://picsum.photos/250?image=9',
                       ),
