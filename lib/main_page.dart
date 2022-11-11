@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_learn_the_basic/Travel_introduction_page.dart';
 import 'main.dart';
@@ -112,8 +113,8 @@ class _firstPageState extends State<firstPage> {
                     //padding: const EdgeInsets.all(10),
 
                     children: [
-                      Image(
-                        image: AssetImage("images/ganyu.jpeg"),
+                      CachedNetworkImage(
+                        imageUrl: 'https://picsum.photos/250?image=9',
                       ),
                       Image(
                         image: NetworkImage(
